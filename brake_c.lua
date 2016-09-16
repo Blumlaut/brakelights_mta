@@ -49,6 +49,7 @@ addAllStreamedInCars()
 
 function destroyDataElement(element,data)
 	if not element or not isElement(element) then return end
+	if not data then return end
 	if not getElementData(element,data) then return end
 	if isElement(getElementData(element,data)) then
 		destroyElement(getElementData(element,data))
