@@ -75,7 +75,6 @@ addEventHandler("onClientPreRender",root,handleAllVehicles)
 function getVehicleGear(veh) 
 	if (veh) then
 		local vehicleGear = getVehicleCurrentGear(veh)
-		
 		return tonumber(vehicleGear)
 	else
 		return 0
@@ -84,18 +83,12 @@ end
 
 
 function drawCoronaPosition(veh)
-	
 	local model = getElementModel(veh)
-	
 	local corona1,corona2,corona3,corona4 = getElementData(veh,"leftlight"), getElementData(veh,"rightlight"),getElementData(veh,"leftlight2"), getElementData(veh,"rightlight2")
-	
 	corona1x,corona1y,corona1z = getPositionFromElementOffset(veh,lights_table[model .. "x"],lights_table[model .. "y"],lights_table[model .. "z"])
 	corona2x,corona2y,corona2z = getPositionFromElementOffset(veh,lights_table[model .. "x2"],lights_table[model .. "y2"],lights_table[model .. "z2"])
-	
 	exports.custom_coronas:setCoronaPosition(corona1,corona1x,corona1y,corona1z)
 	exports.custom_coronas:setCoronaPosition(corona2,corona2x,corona2y,corona2z)
-	
-	
 	if lights_table[model .. "x3"] then
 		corona3x,corona3y,corona3z = getPositionFromElementOffset(veh,lights_table[model .. "x3"],lights_table[model .. "y3"],lights_table[model .. "z3"])
 		corona4x,corona4y,corona4z = getPositionFromElementOffset(veh,lights_table[model .. "x4"],lights_table[model .. "y4"],lights_table[model .. "z4"])
@@ -103,10 +96,6 @@ function drawCoronaPosition(veh)
 		exports.custom_coronas:setCoronaPosition(corona3,corona3x,corona3y,corona3z)
 		exports.custom_coronas:setCoronaPosition(corona4,corona4x,corona4y,corona4z)
 	end
-	
-	
-	
-	
 end
 
 
@@ -115,19 +104,15 @@ function checkForBraking(veh)
 	if not ped then return end
 	local model = getElementModel(veh)
 	if not lights_table[model .. "x"] then return end
-	
 	if getPedControlState(ped,"brake_reverse") then
 		if not isElement(getElementData(veh,"leftlight")) then
 			setElementData(veh,"leftlight",exports.custom_coronas:createCorona(1, 1, 1, 0.4, 220,0,0,alpha),false)
 			setElementData(veh,"rightlight",exports.custom_coronas:createCorona(1, 1, 1, 0.4, 220,0,0,alpha),false)
 			setElementData(veh,"leftlight2",exports.custom_coronas:createCorona(1, 1, 1, 0.4, 220,0,0,alpha),false)
 			setElementData(veh,"rightlight2",exports.custom_coronas:createCorona(1, 1, 1, 0.4, 220,0,0,alpha),false)
-			
-			
 		end
 		drawCoronaPosition(veh)
 	end
-	
 	if getVehicleGear(veh) == 0 then
 		exports.custom_coronas:setCoronaColor(getElementData(veh,"leftlight"),255, 255, 255, alpha)
 		exports.custom_coronas:setCoronaColor(getElementData(veh,"rightlight"),255, 255, 255, alpha)
@@ -139,7 +124,6 @@ function checkForBraking(veh)
 		exports.custom_coronas:setCoronaColor(getElementData(veh,"leftlight2"),220,0,0,alpha)
 		exports.custom_coronas:setCoronaColor(getElementData(veh,"rightlight2"),220,0,0,alpha)
 	end
-	
 	if getPedControlState(ped,"brake_reverse") == false then
 		destroyCoronaElement(veh,"leftlight")
 		destroyCoronaElement(veh,"rightlight")
