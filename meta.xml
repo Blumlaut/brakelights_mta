@@ -1,4 +1,5 @@
 <meta>
+<info author="Bluethefurry" name="Advanced Brakelight System" version="1.0" type="misc" description="Advanced Brakelight System" />
 <script src="brake_data.lua" type="client" />
 <script src="brake_c.lua" type="client" />
 </meta>
