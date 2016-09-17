@@ -27,10 +27,10 @@ addEventHandler("onClientElementStreamIn",root,onCarStreamIn)
 
 function onCarStreamOut()
 	if getElementType(source) ~= "vehicle" then return end
-	destroyDataElement(source,getElementData(source,"leftlight"))
-	destroyDataElement(source,getElementData(source,"rightlight"))
-	destroyDataElement(source,getElementData(source,"leftlight2"))
-	destroyDataElement(source,getElementData(source,"rightlight2"))
+	destroyCoronaElement(source,getElementData(source,"leftlight"))
+	destroyCoronaElement(source,getElementData(source,"rightlight"))
+	destroyCoronaElement(source,getElementData(source,"leftlight2"))
+	destroyCoronaElement(source,getElementData(source,"rightlight2"))
 	table.removeValue(streamedInCars,source)
 end
 addEventHandler("onClientElementStreamOut",root,onCarStreamOut)
