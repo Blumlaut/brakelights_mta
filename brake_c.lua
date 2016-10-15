@@ -59,6 +59,7 @@ end
 
 function destroyCoronaElement(element,data)
 	if not element or not isElement(element) then return end
+	if not data then return end
 	if not getElementData(element,data) then return end
 	if isElement(getElementData(element,data)) then
 		exports.custom_coronas:destroyCorona(getElementData(element,data))
@@ -97,7 +98,6 @@ function drawCoronaPosition(veh)
 	if lights_table[model .. "x3"] then
 		corona3x,corona3y,corona3z = getPositionFromElementOffset(veh,lights_table[model .. "x3"],lights_table[model .. "y3"],lights_table[model .. "z3"])
 		corona4x,corona4y,corona4z = getPositionFromElementOffset(veh,lights_table[model .. "x4"],lights_table[model .. "y4"],lights_table[model .. "z4"])
-		
 		exports.custom_coronas:setCoronaPosition(corona3,corona3x,corona3y,corona3z)
 		exports.custom_coronas:setCoronaPosition(corona4,corona4x,corona4y,corona4z)
 	end
